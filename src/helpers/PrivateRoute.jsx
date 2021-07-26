@@ -5,7 +5,7 @@ export const PrivateRoute = ({ component: Component, ...rest}) => (
     <Route
         {...rest}
         render = { props =>
-            localStorage.getItem('authorization') ? (
+            localStorage.getItem('authentication') ? (
                 <Component {...props} />
             ) : (
                 <Redirect
