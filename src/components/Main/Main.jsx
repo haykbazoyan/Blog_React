@@ -31,8 +31,6 @@ export default function Main() {
                         <LogIn />
                     </Route>
                     <PrivateRoute path="/createPost" component={CreatePost} />
-                        
-                    
                 </Switch>
             </div>
         </Router>
