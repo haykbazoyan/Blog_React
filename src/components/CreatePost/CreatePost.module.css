@@ -1,27 +1,15 @@
-h1 {
-    font-size: 25px;
-    font-style: oblique;
-    color: rgb(0, 0, 70);
-}
-
 .postBg {
     width: 60%;
     height: 600px;
     margin: 20px auto;
-    border: 1px solid grey;
+    border: 1px solid rgb(0, 0, 122);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; 
+}
+
+h1 {
+    font-size: 25px;
+    font-style: oblique;
+    color: rgb(0, 0, 70);
     
-}
-
-.title {
-    width: 40%;
-    height: 400px;
-    margin: 20px auto;
-    border: 1px solid grey;
-}
-
-.textarea {
-    border: 1px solid black;
 }
