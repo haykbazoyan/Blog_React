@@ -5,8 +5,8 @@ import styles from './CreatePost.module.css'
 export default function CreatePost () {
     return (
         <div className={`${styles.postBg}`}>  
-            <h1 className='ml-5'>CreatePost</h1>
-            <hr className='m-5' />
+            <h1 className='m-5 text-blue-900 text-3xl'>CreatePost</h1>
+            <hr className='mb-3' />
             <div className='ml-5'>
                 <Input type="text" name="title" placeholder='Title *' />
                 <Textarea rows="20"  name="content" placeholder='Content' />

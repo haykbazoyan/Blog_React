@@ -68,7 +68,7 @@ export default class LogIn extends React.Component {
 
         return (
             <div className={`${styles.container}`}>
-                <h3 className="text-3xl mt-5">Sign Up</h3>
+                <h3 className="text-3xl mt-5 text-blue-900">Sign Up</h3>
                 
                 <form className='flex flex-col mt-5 w-2/3' onSubmit={this.handleSubmit}>
                     <Input type='text' placeholder='Login' value={this.state.login} func={this.changeHandlerLogin} />
