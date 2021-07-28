@@ -1,6 +1,12 @@
 import React from 'react'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
+import {
+    BrowserRouter as Router,
+    Redirect
+  } from "react-router-dom"
+import CreatePost from '../CreatePost/CreatePost'
+
 
 export default class LogIn extends React.Component {
     constructor(props) {
@@ -8,27 +14,26 @@ export default class LogIn extends React.Component {
         this.state = {
             login: "",
             password: '',
-            data: []
+            data: [],
+            isAuth: false
         }
     }
 
     handleSubmit = (e) => {
-        // if(!this.isCorrectPassword()){
-        //     return true;
-        // }
-        
         const user = {
             log: this.state.login,
             pas: this.state.password
         }
         
         this.state.data.push(user);
-        localStorage.setItem('key', JSON.stringify(this.state.data));
+        localStorage.setItem('authentication', JSON.stringify(this.state.data));
 
         this.setState({
             login: '',
-            password: ''
-        })
+            password: '',
+            isAuth: true
+        });
+        
     }
 
     changeHandlerLogin = (e) => {
@@ -55,18 +60,14 @@ export default class LogIn extends React.Component {
 
     isDisable = () => {
         const { login, password } = this.state;
-        // return (login === '' || password === '' || (!this.isCorrectPassword())) ? true : false;
-
-        if (password === '' && (!this.isCorrectPassword())) {
-            return false;
-        } else if (login === '' || password === '' || (!this.isCorrectPassword())) {
-            return true;
-        } else {
-            return false;
-        }
+        return (login === '' || password === '' || (!this.isCorrectPassword())) ? true : false;
     }
     
     render() {
+        if (this.state.isAuth) {
+            console.log('Auth work');
+            return <Redirect to={"/createPost"} />
+        }
 
         return (
             <div className='text-center'>
@@ -75,7 +76,7 @@ export default class LogIn extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <Input type='text' placeholder='Login' value={this.state.login} func={this.changeHandlerLogin} />
                         <Input type='password' placeholder='Password' value={this.state.password} func={this.changeHandlerPassword} />
-                        <p className='text-xs text-gray-500 m-3'>{(this.isDisable()) ? 'eight characters, at least one uppercase letter, one lowercase letter, one number and one special character' : ''}</p>
+                        <p className='text-xs text-gray-500 m-3'>{(this.isDisable()) ? 'Eight characters, at least one uppercase letter, one lowercase letter, one number and one special character!' : ''}</p>
                         <Button onClick={this.handleSubmit} isDisable={this.isDisable()} btnName='Submit' />
                     </form>
                 </div>
