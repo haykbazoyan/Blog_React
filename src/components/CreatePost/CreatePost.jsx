@@ -1,5 +1,6 @@
 import Input from '../Input/Input'
 import Textarea from '../Textarea/Textarea'
+import Button from '../Button/Button'
 import styles from './CreatePost.module.css'
 
 export default function CreatePost () {
@@ -10,10 +11,9 @@ export default function CreatePost () {
             <div className='ml-5'>
                 <Input type="text" name="title" placeholder='Title *' />
                 <Textarea rows="20"  name="content" placeholder='Content' />
+                <Button onClick='' isDisable='false' btnName='Post' />
             </div>
             
-            
-
         </div>
     )
 }
