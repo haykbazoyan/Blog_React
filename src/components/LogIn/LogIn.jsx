@@ -2,6 +2,7 @@ import React from 'react'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
 import { Redirect } from "react-router-dom"
+import styles from './Login.module.css'
 
 
 export default class LogIn extends React.Component {
@@ -66,16 +67,15 @@ export default class LogIn extends React.Component {
         }
 
         return (
-            <div className='text-center'>
-                <h3 className="text-3xl border pt-3 pb-2 mb-2">Sign Up</h3>
-                <div className='w-1/4 md:items-center flex flex-col  px-8  pt-6 pb-8 mb-4'>
-                    <form onSubmit={this.handleSubmit}>
-                        <Input type='text' placeholder='Login' value={this.state.login} func={this.changeHandlerLogin} />
-                        <Input type='password' placeholder='Password' value={this.state.password} func={this.changeHandlerPassword} />
-                        <p className='text-xs text-gray-500 m-3'>{(this.isDisable()) ? 'Eight characters, at least one uppercase letter, one lowercase letter, one number and one special character!' : ''}</p>
-                        <Button onClick={this.handleSubmit} isDisable={this.isDisable()} btnName='Submit' />
-                    </form>
-                </div>
+            <div className={`${styles.container}`}>
+                <h3 className="text-3xl mt-5">Sign Up</h3>
+                
+                <form className='flex flex-col mt-5 w-2/3' onSubmit={this.handleSubmit}>
+                    <Input type='text' placeholder='Login' value={this.state.login} func={this.changeHandlerLogin} />
+                    <Input type='password' placeholder='Password' value={this.state.password} func={this.changeHandlerPassword} />
+                    <p className='text-xs text-gray-500 mt-2 mb-3'>{(this.isDisable()) ? 'Eight characters, at least one uppercase letter, one lowercase letter, one number and one special character!' : ''}</p>
+                    <Button onClick={this.handleSubmit} isDisable={this.isDisable()} btnName='Submit' />
+                </form>
             </div> 
         )
     }
