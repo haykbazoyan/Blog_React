@@ -28,7 +28,6 @@ export default class LogIn extends React.Component {
         this.setState({
             login: '',
             password: '',
-            // data: [...data, user],
             isAuth: true
         });
         
