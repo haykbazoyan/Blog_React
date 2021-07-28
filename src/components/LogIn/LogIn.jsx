@@ -1,36 +1,34 @@
 import React from 'react'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
-import {
-    BrowserRouter as Router,
-    Redirect
-  } from "react-router-dom"
-import CreatePost from '../CreatePost/CreatePost'
+import { Redirect } from "react-router-dom"
 
 
 export default class LogIn extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            login: "",
+            login: '',
             password: '',
-            data: [],
+            data: localStorage.getItem('authentication') ? JSON.parse(localStorage.getItem('authentication')) : [],
             isAuth: false
         }
     }
 
     handleSubmit = (e) => {
+        
         const user = {
             log: this.state.login,
             pas: this.state.password
         }
         
-        this.state.data.push(user);
+        this.state.data.push(user)
         localStorage.setItem('authentication', JSON.stringify(this.state.data));
-
+        
         this.setState({
             login: '',
             password: '',
+            // data: [...data, user],
             isAuth: true
         });
         
@@ -53,7 +51,7 @@ export default class LogIn extends React.Component {
 
     isCorrectPassword = () => {
         const { password } = this.state;
-        const regExp = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+        const regExp = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
          
         return regExp.test(password);
     }
@@ -65,7 +63,6 @@ export default class LogIn extends React.Component {
     
     render() {
         if (this.state.isAuth) {
-            console.log('Auth work');
             return <Redirect to={"/createPost"} />
         }
 
