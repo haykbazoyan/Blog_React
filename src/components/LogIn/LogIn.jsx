@@ -4,6 +4,16 @@ import Button from '../Button/Button'
 import { Redirect } from "react-router-dom"
 import styles from './Login.module.css'
 
+const idRandom = () => {
+    let id = 0;
+    return () => {
+        id += 1;
+        return id;
+    };
+}
+
+const getId = idRandom()
+
 
 export default class LogIn extends React.Component {
     constructor(props) {
@@ -20,7 +30,9 @@ export default class LogIn extends React.Component {
         
         const user = {
             log: this.state.login,
-            pas: this.state.password
+            pas: this.state.password,
+            isActive: true,
+            id: getId()
         }
         
         this.state.data.push(user)
